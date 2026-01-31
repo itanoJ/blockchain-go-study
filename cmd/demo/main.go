@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 
 	demo "github.com/itanoJ/blockchain-go-study"
 )
@@ -16,5 +17,9 @@ func main() {
 		fmt.Printf("  PrevHash: %x\n", b.PrevHash)
 		fmt.Printf("  Hash: %x\n", b.Hash)
 		fmt.Printf("  Timestamp: %d\n", b.Timestamp)
+
+		proof := demo.NewProofWork(b)
+		bol := demo.Validate(proof)
+		fmt.Printf("PoW: %s\n", strconv.FormatBool(bol))
 	}
 }

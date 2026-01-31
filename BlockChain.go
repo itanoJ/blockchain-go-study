@@ -10,6 +10,6 @@ func NewGenesisBlockChain(data string) *BlockChain {
 
 func (bc *BlockChain) AddBlock(data string) {
 	prevBlock := bc.Blocks[len(bc.Blocks)-1]
-	nb := NewBlock(prevBlock.Hash, data)
+	nb := NewBlock(data, prevBlock.Hash)
 	bc.Blocks = append(bc.Blocks, nb)
 }
