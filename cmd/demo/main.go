@@ -8,8 +8,8 @@ import (
 
 func main() {
 	chain := demo.NewGenesisBlockChain("New Genesis Block Chain!")
-	chain.AddBlockChain("A Send to B 1 Btc")
-	chain.AddBlockChain("B Send to C 0.3 Btc")
+	chain.AddBlock("A Send to B 1 Btc")
+	chain.AddBlock("B Send to C 0.3 Btc")
 	for i, b := range chain.Blocks {
 		fmt.Printf("index: %d\n", i)
 		fmt.Printf("  Data: %s\n", string(b.Data))

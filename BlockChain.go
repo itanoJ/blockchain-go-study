@@ -5,13 +5,10 @@ type BlockChain struct {
 }
 
 func NewGenesisBlockChain(data string) *BlockChain {
-	chain := BlockChain{}
-	ngb := NewGenesisBlock(data)
-	chain.Blocks = append(chain.Blocks, ngb)
-	return &chain
+	return &BlockChain{[]*Block{NewGenesisBlock(data)}}
 }
 
-func (bc *BlockChain) AddBlockChain(data string) {
+func (bc *BlockChain) AddBlock(data string) {
 	prevBlock := bc.Blocks[len(bc.Blocks)-1]
 	nb := NewBlock(prevBlock.Hash, data)
 	bc.Blocks = append(bc.Blocks, nb)
