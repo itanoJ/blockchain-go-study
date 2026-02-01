@@ -99,11 +99,11 @@ func IntToHex(v int64) []byte {
 	return buf.Bytes()
 }
 
-func Validate(p *ProofWork) bool {
+func (pow *ProofWork) Validate() bool {
 	var hashInt big.Int
-	r := p.PrepareData(p.Block.Nonce)
+	r := pow.PrepareData(pow.Block.Nonce)
 	hash := sha256.Sum256(r)
 	hashInt.SetBytes(hash[:])
-	return hashInt.Cmp(p.Target) == -1
+	return hashInt.Cmp(pow.Target) == -1
 
 }

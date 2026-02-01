@@ -1,6 +1,8 @@
 package blockchain_go_demo
 
 import (
+	"bytes"
+	"encoding/gob"
 	"time"
 )
 
@@ -23,4 +25,16 @@ func NewBlock(data string, prevHash []byte) *Block {
 
 func NewGenesisBlock(data string) *Block {
 	return NewBlock(data, []byte{})
+}
+
+func (b *Block) Serialize() []byte {
+	var result bytes.Buffer
+	encoder := gob.NewEncoder(&result)
+
+	err := encoder.Encode(b)
+	if err != nil {
+		panic(err)
+	}
+
+	return result.Bytes()
 }
